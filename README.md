@@ -1,3 +1,3 @@
 # great_places_app
 
-A new Flutter project.
+New Flutter project.
