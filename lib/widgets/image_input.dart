@@ -26,6 +26,8 @@ class _ImageInputState extends State<ImageInput> {
     });
     final appDir = await syspaths.getApplicationDocumentsDirectory();
 
+   //image file .copy does not work rn because .copy works on path object but here in the new version of ImagePicker pickImage returns an XFile not a path
+   //or something like that , need to read more about it to get it fixed ...
    // imageFile.copy();
   }
 
