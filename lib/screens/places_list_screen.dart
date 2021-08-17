@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/helpers/db_helper.dart';
+import '../helpers/db_helper.dart';
 import '../providers/great_places.dart';
 import '../screens/add_place_screen.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +39,7 @@ class PlacesListScreen extends StatelessWidget {
                                     FileImage(greatPlaces.items[i].image),
                               ),
                               title: Text(greatPlaces.items[i].title),
+                              subtitle: Text(greatPlaces.items[i].location.address),
                               onTap: () {
                                 //Go to detail page ...
                               },
