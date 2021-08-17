@@ -8,6 +8,11 @@ import 'package:path_provider/path_provider.dart' as syspaths;
 
 
 class ImageInput extends StatefulWidget {
+
+  final Function onSelectImage;
+
+  ImageInput(this.onSelectImage);
+
   @override
   _ImageInputState createState() => _ImageInputState();
 }
@@ -21,14 +26,20 @@ class _ImageInputState extends State<ImageInput> {
       source: ImageSource.camera,
       maxWidth: 600,
     );
+    if(imageFile == null)
+    {
+      return; 
+    }
     setState(() {
       _storedImage = File(imageFile.path); 
     });
+    //get a Path to a directory where the application may place data that is user-generated,
+    // or that cannot otherwise be recreated by your application.
     final appDir = await syspaths.getApplicationDocumentsDirectory();
-
-   //image file .copy does not work rn because .copy works on path object but here in the new version of ImagePicker pickImage returns an XFile not a path
-   //or something like that , need to read more about it to get it fixed ...
-   // imageFile.copy();
+    //get file name as named by the OS 
+    final fileName = path.basename(imageFile.path);
+    final savedImage = await _storedImage.copy('${appDir.path}/$fileName');
+    widget.onSelectImage(savedImage);
   }
 
   @override
