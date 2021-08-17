@@ -26,6 +26,8 @@
 	<String>We need access to your photos</String>
 	<key>NSCameraUsageDescription </key>
 	<String>We need to take a picture</String>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<String>Need to get your location!</String>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
