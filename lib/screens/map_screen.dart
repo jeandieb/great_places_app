@@ -46,9 +46,18 @@ class _MapScreenState extends State<MapScreen> {
               target: LatLng(widget.intitialLocation.latitude,
                   widget.intitialLocation.longitude)),
           onTap: widget.isSelecting ? _selectLocation : null,
-          markers: _pickedLocation == null
+          markers: _pickedLocation == null && widget.isSelecting
               ? {}
-              : {Marker(markerId: MarkerId('m1'), position: _pickedLocation)}),
+              : {
+                  Marker(
+                      markerId: MarkerId('m1'),
+                      //check again if the _pickedLocation is null use the inital Location coordinates.. 
+                      position: _pickedLocation ??
+                          LatLng(
+                            widget.intitialLocation.latitude,
+                            widget.intitialLocation.longitude,
+                          ))
+                }),
     );
   }
 }
